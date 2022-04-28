@@ -25,7 +25,16 @@ body {
           flex-direction: column;
 }
 
+.logo {
+  width: 24px;
+  position: absolute;
+  top: 2em;
+  right: 2em;
+  opacity: 0.2;
+}
+
 .form, .finalPrice {
+  position: relative;
   width: 400px;
   background-color: #fff;
   padding: 2em;
@@ -45,6 +54,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  position: relative;
 }
 .form picture, .finalPrice picture {
   margin: auto;
