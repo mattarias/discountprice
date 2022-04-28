@@ -1,33 +1,89 @@
-const coupons = [
+const productList = [
 	{
-		name: 'CODE1',
-		discount: '10',
+		name: 'iPhone 13 Pro',
+		price: '999',
+		slogan: 'The ultimate iPhone.',
+		url: 'https://www.apple.com/v/iphone/home/bg/images/overview/compare/compare_iphone_13_pro__bpn3x8hs692a_large.jpg',
 	},
 	{
-		name: 'CODE2',
-		discount: '20',
+		name: 'iPhone 13',
+		price: '699',
+		slogan: 'A total powerhouse.',
+		url: 'https://www.apple.com/v/iphone/home/bg/images/overview/compare/compare_iphone_13__fqzwhmfmroey_large.jpg',
 	},
 	{
-		name: 'CODE3',
-		discount: '30',
+		name: 'iPhone SE',
+		price: '429',
+		slogan: 'Serious power. Serious value.',
+		url: 'https://www.apple.com/v/iphone/home/bg/images/overview/compare/compare_iphone_se__d5blqx1pgymq_large.jpg',
 	},
-	'CODE1',
+	{
+		name: 'iPhone 12',
+		price: '599',
+		slogan: 'As amazing as ever.',
+		url: 'https://www.apple.com/v/iphone/home/bg/images/overview/compare/compare_iphone_12__dz3sv9lzdzu6_large.jpg',
+	},
 ];
 
-function productPriceWithDiscount() {
-	const productPrice = document.getElementById('productPrice').value;
-	console.log('El precio del producto ingresado es: ' + productPrice);
-	const discountCouponValue = document.getElementById('discountCoupon').value;
-	console.log('El cupon ingresado es: ' + discountCouponValue);
-	if (!coupons.find((item) => item.name === discountCouponValue)) {
-		alert('Cupon no disponible');
+const couponsList = [
+	{name: '10OFF', discount: 10},
+	{name: '50OFF', discount: 50},
+	{name: '100OFF', discount: 100},
+];
+
+var precioProductoSinDescuento;
+var product;
+
+function addProductPrice() {
+	console.group('Producto y valor');
+	product = document.getElementById('product').value;
+	console.log('Producto seleccionado: ' + product);
+	const priceByProduct = productList.find(
+		(element) => element.name === product
+	);
+	console.log('Valor del producto seleccionado: ' + priceByProduct.price);
+	precioProductoSinDescuento = priceByProduct.price;
+	const productPrice = document.getElementById('productPrice');
+	productPrice.innerText = priceByProduct.price;
+	const productSlogan = document.getElementById('productSlogan');
+	productSlogan.innerText = priceByProduct.slogan;
+	const productImage = document.getElementById('productImage');
+	productImage.src = priceByProduct.url;
+
+	return product;
+	console.groupEnd();
+}
+
+function productPriceWithDiscount(price, discount) {
+	console.group('Calculo de descuentos');
+	const priceWithDiscount = 100 - discount;
+	const finalPrice = (price * priceWithDiscount) / 100;
+	console.log('tipo: ' + typeof finalPrice + finalPrice);
+	console.log('Precio del producto con descuento: ' + finalPrice);
+	const finalPriceText = document.getElementById('finalPriceText');
+	finalPriceText.innerText = finalPrice;
+	return finalPrice;
+}
+
+function applyDiscount() {
+	console.group('Calculo de producto con coupon de descuento');
+	let discountCoupon = document.getElementById('discountCoupon').value;
+	if (!product) {
+		alert('Seleccione un producto');
 	} else {
-		const discountByCoupon = coupons.find(
-			(element) => element.name === discountCouponValue
-		);
-		console.log('Descuento del cupon: ' + discountByCoupon.discount);
-		const finalPrice =
-			(productPrice * (100 - discountByCoupon.discount)) / 100;
-		console.log('El precio del producto con descuento es: ' + finalPrice);
+		if (!discountCoupon) {
+			console.log('Sin cupon');
+		} else {
+			console.log('Coupon selecionado: ' + discountCoupon);
+			const discountByCoupon = couponsList.find(
+				(element) => element.name === discountCoupon
+			);
+			console.log('Descuento del coupon es: ' + discountByCoupon.discount);
+			productPriceWithDiscount(
+				precioProductoSinDescuento,
+				discountByCoupon.discount
+			);
+		}
 	}
+	console.groupEnd();
 }

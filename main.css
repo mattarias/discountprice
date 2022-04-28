@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+  font-family: "Inter", sans-serif;
+  background-color: #f2f2f3;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form, .finalPrice {
+  width: 400px;
+  background-color: #fff;
+  padding: 2em;
+  border: 1px solid #ebebeb;
+  border-radius: 0.5em;
+}
+.form .title, .finalPrice .title {
+  font-weight: bold;
+  color: #1d1d1f;
+  margin-bottom: 1em;
+}
+.form form, .finalPrice form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.form picture, .finalPrice picture {
+  margin: auto;
+  width: 140px;
+  height: 255px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.form picture .productImage, .finalPrice picture .productImage {
+  width: 100%;
+  margin: auto;
+}
+.form .caption, .finalPrice .caption {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 2em;
+  font-weight: bold;
+}
+.form .caption span, .finalPrice .caption span {
+  text-align: center;
+}
+.form .caption .productPrice, .finalPrice .caption .productPrice {
+  display: block;
+}
+.form .priceStaring, .finalPrice .priceStaring {
+  font-weight: 400;
+  color: #636363;
+}
+
+.finalPrice {
+  margin-top: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.finalPrice .item {
+  font-weight: bold;
+}
+
+form input, select {
+  padding: 1em;
+  width: 100%;
+  outline: none;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  display: inline-block;
+  -webkit-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+}
+
+button {
+  border: none;
+  background-color: #0071e3;
+  padding: 1em 0;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0060c0;
+}
+
+.couponZone {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1em 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 1em;
+}
+.couponZone span {
+  font-size: 12px;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
+  color: #acacac;
+  text-align: center;
+}

@@ -4,21 +4,72 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="main.css" />
+		<script src="script.js"></script>
 		<title>Discount coupons</title>
 	</head>
 	<body>
-		<form>
-			<label for="productPrice">Product price</label>
-			<input id="productPrice" type="number" />
-			<label for="discountCoupon">Discount coupon</label>
-			<input id="discountCoupon" type="text" />
-			<button
-				id="calculate"
-				type="button"
-				onClick="productPriceWithDiscount()"
-			>
-				calculate
-			</button>
-		</form>
+		<div class="form">
+			<h1 class="title">
+				Which iPhone
+				<br />
+				is right for you?
+			</h1>
+			<form>
+				<select
+					name="product"
+					id="product"
+					onChange="addProductPrice()"
+					required
+				>
+					<option value="iPhone 13 Pro" default selected readonly>
+						Select a iPhone
+					</option>
+					<option value="iPhone 13 Pro">iPhone 13 Pro</option>
+					<option value="iPhone 13">iPhone 13</option>
+					<option value="iPhone SE">iPhone SE</option>
+					<option value="iPhone 12">iPhone 12</option>
+				</select>
+				<!-- <label for="productPrice">Product price</label>
+				<input
+					id="productPrice"
+					type="number"
+					placeholder="Select a product"
+					readonly
+				/> -->
+				<picture>
+					<img class="productImage" id="productImage" src="" alt="" />
+				</picture>
+				<div class="caption">
+					<span id="productSlogan"></span>
+					<span class="priceStaring">
+						<span>
+							From
+							<span id="productPrice"></span>
+						</span>
+					</span>
+				</div>
+				<!-- <label for="discountCoupon">Discount coupon</label> -->
+				<div class="couponZone">
+					<input
+						id="discountCoupon"
+						type="text"
+						placeholder="Discount code"
+					/>
+					<button id="calculate" type="button" onClick="applyDiscount()">
+						Apply
+					</button>
+					<span>Try with: 10OFF, 50OFF or 100OFF</span>
+				</div>
+			</form>
+		</div>
+		<div class="finalPrice">
+			<span class="item">Final price:</span>
+			<span id="finalPriceText"></span>
+		</div>
 	</body>
 </html>
